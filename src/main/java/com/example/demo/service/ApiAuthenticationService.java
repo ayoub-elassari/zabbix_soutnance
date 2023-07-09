@@ -14,8 +14,8 @@ public class ApiAuthenticationService {
         this.restTemplate = restTemplate;
     }
 
-    public String authenticate(ApiVersionRequest apiVersionRequest){
-        String apiUrl = "http://192.168.23.133/zabbix/api_jsonrpc.php";
+    public ResponseEntity<String> authenticate(ApiVersionRequest apiVersionRequest){
+        String apiUrl = "http://192.168.23.137/zabbix/api_jsonrpc.php";
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         JSONObject requestBody = new JSONObject();
@@ -32,7 +32,7 @@ public class ApiAuthenticationService {
         HttpEntity<String> requestEntity = new HttpEntity<>(requestBody.toString(), headers);
         ResponseEntity<String> responseEntity = restTemplate.exchange(apiUrl, HttpMethod.POST, requestEntity, String.class);
         System.out.println(responseEntity.getBody());
-        return  responseEntity.getBody();
+        return  new ResponseEntity<>(responseEntity.getBody(),HttpStatus.INTERNAL_SERVER_ERROR);
 
     }
 }

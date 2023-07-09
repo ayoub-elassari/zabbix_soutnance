@@ -21,7 +21,7 @@ public class ApiAuthenticationController {
 
     @PostMapping(value = "/auth")
 //    @ResponseBody
-    public String getToken(@RequestBody ApiVersionRequest apiVersionRequest) {
+    public ResponseEntity<String> getToken(@RequestBody ApiVersionRequest apiVersionRequest) {
         return apiAuthenticationService.authenticate(apiVersionRequest);
 
 

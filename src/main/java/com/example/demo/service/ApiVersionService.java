@@ -18,7 +18,7 @@ public class ApiVersionService {
     }
 
     public String getApiVersion(ApiVersionRequest apiVersionRequest){
-        String apiUrl = "http://192.168.23.133/zabbix/api_jsonrpc.php";
+        String apiUrl = "http://192.168.23.137/zabbix/api_jsonrpc.php";
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
